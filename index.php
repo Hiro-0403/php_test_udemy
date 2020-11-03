@@ -10,5 +10,17 @@ echo "<pre>";
 var_dump($array_2);
 echo "</pre>";
 
-echo $array_2[1][1];
+// echo $array_2[1][1];
+
+$array_member = [
+  "name" => "本田",
+  "height" => 170,
+  "hobby" => "サッカー"
+];
+
+echo $array_member["name"];
+
+echo "<pre>";
+var_dump($array_member);
+echo "</pre>";
 ?>
