@@ -9,4 +9,12 @@ for($i = 0; $i < 10; $i++ ) {
   }
   echo $i;
 }
+
+echo"<br>";
+
+$a = 0;
+while ($a <= 10) {
+  echo $a;
+  $a++;
+}
 ?>
