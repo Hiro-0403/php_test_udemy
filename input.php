@@ -17,13 +17,10 @@ if(!empty($_POST["btn_submit"])){
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
 </head>
 <body>
 
-
 <?php if($pageFlag === 0) : ?>
-
 
 <form method="POST" action="input.php">
 名前
@@ -40,19 +37,22 @@ if(!empty($_POST["btn_submit"])){
 
 <form method="POST" action="input.php">
 名前
-<?php echo $_POST["your_name"] ; ?>
+<?php echo $_POST["your_name"] value=""; ?>
 <br>
 メールアドレス
 <?php echo $_POST["email"] ; ?>
-<input type="submit" name="btn_confirm" value="送信する">
+
+<input type="sumbit" name="back" value="戻る">
+<input type="submit" name="btn_submit" value="送信する">
 <input type="hidden" name="your_name" value=<?php echo $_POST["your_name"] ; ?>>
 <input type="hidden" name="email" value=<?php echo $_POST["email"] ; ?>>
+
 </form>
 
 <?php endif; ?>
 
 <?php if($pageFlag === 2) : ?>
-完了
+送信が完了しました。
 <?php endif; ?>
 
 
