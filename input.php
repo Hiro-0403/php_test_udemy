@@ -9,9 +9,9 @@ function h($str)
 #ファーム作成
 #入力、確認、完了 input.php,confirm.php,thanks.php
 #今回は、input.php
-// echo "<pre>";
-// var_dump($_POST);
-// echo "</pre>";
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
 
 
 $pageFlag = 0;
@@ -32,6 +32,13 @@ if(!empty($_POST["btn_submit"])){
 <body>
 
 <?php if($pageFlag === 0) : ?>
+<?php
+if(!isset($_SESSION["csrfToken"])){
+  $csrfToken = bin2hex(random_bytes(32));
+  $_SESSION["csrfToken"] = $csrfToken;
+}
+$token =$_SESSION["csrfToken"];
+?>
 
 <form method="POST" action="input.php">
 氏名
@@ -41,11 +48,13 @@ if(!empty($_POST["btn_submit"])){
 <input type="email" name="email">
 <br>
 <input type="submit" name="btn_confirm" value="確認する">
+<input type="hidden" name="csrf" value="<?php echo $token?>">
 
 </form>
 <?php endif; ?>
 
 <?php if($pageFlag === 1) : ?>
+<?php if($_POST["csef"] === $_SESSION["csrfToken"]) : ?>
 <form method="POST" action="input.php">
 名前
 <?php echo h($_POST["your_name"]) ; ?>
@@ -54,18 +63,22 @@ if(!empty($_POST["btn_submit"])){
 <?php echo h($_POST["email"]) ; ?>
 <br>
 <!-- <input type="sumbit" name="back" value="戻る"> -->
-<input type="submit" name="btn_submit" value="戻る">
+<input type="submit" name="back" value="戻る">
 <input type="submit" name="btn_submit" value="送信する">
 <input type="hidden" name="your_name" value="<?php echo h($_POST["your_name"]) ; ?>">
-<input type="hidden" name="email" value="<?php echo h($_POST["email"]) ; ?>">
+<input type="hidden" name="csrf" value="<?php echo h($_POST["csrf"]) ; ?>">
 </form>
 
 <?php endif; ?>
-
-<?php if($pageFlag === 2) : ?>
-送信が完了しました。
 <?php endif; ?>
 
+<?php if($pageFlag === 2) : ?>
+<?php if($_POST["csrf"] === $_SESSION["csrfToken"]) : ?>
+送信が完了しました。
+
+<?php unset($_SESSION["csrfToken"]) : ?>
+<?php endif; ?>
+<?php endif; ?>
 
 </body>
 </html>
