@@ -5,15 +5,15 @@ function validation($request){ #$_POST連想配列
   $errors = [];
 
   #氏名
-  if(empty($request["your_name"]) || 20 < mb_strlen($data["your_name"])){
+  if(empty($request["your_name"]) || 20 < mb_strlen($request["your_name"])){
     $errors[] = "氏名は20文字以内で入力してください";
   }
   #お問い合わせ
-  if(empty($request["contact"]) || 200 < mb_strlen($data["contact"])){
+  if(empty($request["contact"]) || 200 < mb_strlen($request["contact"])){
     $errors[] = "お問い合わせは200文字以内で入力してください";
   }
   #注意事項
-  if($request["caution"] !== "1") {
+  if(empty($request["caution"])) {
     $errors[] = "注意事項をご確認ください" ;
   }
   #性別
@@ -21,7 +21,7 @@ function validation($request){ #$_POST連想配列
     $errors[] = "性別は必ず入力してください" ;
   }
   #年齢
-  if (empty($request["age"]) || 6 < $data["age"]) {
+  if (empty($request["age"]) || 6 < $request["age"]) {
     $errors[] = "年齢は必ず入力してください" ;
   }
   #メールアドレス
