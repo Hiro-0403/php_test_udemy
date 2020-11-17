@@ -68,44 +68,60 @@ $token =$_SESSION["csrfToken"];
     <form method="POST" action="input.php">
     <div class="form-group">
       <label for="your_name">氏名</label>
-      <input type="text"class="form-control" id="your_name" name="your_name" value="<?php if(!empty($_POST["your_name"])){echo $_POST["your_name"] ;} ?>" required>
+      <input type="text" class="form-control" id="your_name" name="your_name" value="<?php if(!empty($_POST["your_name"])){echo $_POST["your_name"] ;} ?>" required>
     </div>
-    </div>
-  </div>
-</div>
-<br>
-メールアドレス
-<input type="email" name="email" value="<?php if(!empty($_POST["email"])){echo $_POST["email"] ;} ?>">
-<br>
-ホームページ
-<input type="url" name="url" value="<?php if(!empty($_POST["url"])){echo $_POST["url"] ;} ?>">
-<br>
-性別
-<input type="radio" name="gender" value="0">男性
-<input type="radio" name="gender" value="1">女性
-<br>
-年齢
-<select name="age">
-<option value="">選択してください</option>
-<option value="1">〜19歳</option>
-<option value="2">20歳〜29歳</option>
-<option value="3">30歳〜39歳</option>
-<option value="4">40歳〜49歳</option>
-<option value="5">50歳〜59歳</option>
-<option value="6">60歳〜</option>
-</select>
-<br>
-お問い合わせ内容
-<textarea name="contact">
-<?php if(!empty($_POST["contact"])){echo $_POST["contact"] ;} ?>
-</textarea>
-<br>
-<input type="checkbox" name="caution" value="1">注意事項にチェックする
-<br>
-<input type="submit" name="btn_confirm" value="確認する">
-<input type="hidden" name="csrf" value="<?php echo $token?>">
 
-</form>
+    <div class="form-group">
+      <label for="email">メールアドレス</label>
+      <input type="email" class="form-control" id="email" name="email" value="<?php if(!empty($_POST["email"])){echo $_POST["email"] ;} ?>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="url">ホームページ</label>
+      <input type="url" class="form-control" id="url" name="url" value="<?php if(!empty($_POST["url"])){echo $_POST["url"] ;} ?>">
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-inputname" name="gender" id="gender1" value="0"
+      <?php if(!empty($_POST["gender"]) && $_POST["gender"] === "0" )
+      { echo "checked"; } ?>>
+      <label class="form-check-label" for="gender1">男性</label>
+      <input type="radio" class="form-check-input" name="gender" id="gender2" value="1"
+      <?php if(!empty($_POST["gender"]) && $_POST["gender"] === "1" )
+      { echo "checked"; } ?>>
+      <label class="form-check-label" for="gender2">女性</label>
+    </div>
+
+    <div class="form-group">
+    <label for="age">年齢</label>
+    <select class="form-control" id="age" name="age">
+      <option value="">選択してください</option>
+      <option value="1">〜19歳</option>
+      <option value="2">20歳〜29歳</option>
+      <option value="3">30歳〜39歳</option>
+      <option value="4">40歳〜49歳</option>
+      <option value="5">50歳〜59歳</option>
+      <option value="6">60歳〜</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+      <label for="contact">お問い合わせ内容</label>
+      <textarea class="form-control" id="contact" row="3" name="contact">
+      <?php if(!empty($_POST["contact"])){echo $_POST["contact"] ;} ?>
+      </textarea>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="caution" name="caution" value="1">
+      <label class="form-check-label" for=caution>"注意事項にチェックする"</label>
+    </div>
+    <input class="btn btn-info" type="submit" name="btn_confirm" value="確認する">
+    <input type="hidden" name="csrf" value="<?php echo $token?>">
+    </form>
+    </div><!-- .col-md-6 -->
+  </div><!-- .row -->
+</div><!-- .container -->
 <?php endif; ?>
 
 <?php if($pageFlag === 1) : ?>
