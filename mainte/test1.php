@@ -2,13 +2,13 @@
 
 $contactFile = ".contact.dat" ;
 
-#fファイル丸ごと読み込み
-// $fileContents = file_get_contents($contactFile);
+// #fファイル丸ごと読み込み
+// // $fileContents = file_get_contents($contactFile);
 
-// echo $fileContents;
+// // echo $fileContents;
 
-#ファイルに書き込み（上書き）
-// file_put_contents($contactFile, "テストです");
+// #ファイルに書き込み（上書き）
+// // file_put_contents($contactFile, "テストです");
 
 // $addText = "テストです" . "\n";
 

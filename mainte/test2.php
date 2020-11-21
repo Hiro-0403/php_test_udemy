@@ -2,7 +2,7 @@
 
 $contactFile = ".contact.dat";
 
-$contents = fopen($contactFile, "a+");
+$contents = fopen($contactFile, "a++");
 
 $addText = "１行追記" . "\n";
 
