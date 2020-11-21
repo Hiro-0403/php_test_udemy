@@ -25,3 +25,19 @@ $result = $stmt->fetchall();
 echo"<pre>";
 var_dump($result);
 echo"</pre>";
+
+#トランザクションまとまって処理 beginTransaction,commit,rollback
+#銀行残高を確認。Aさんが引き落とし=>Bさんに振り込み
+
+$pdo->beginTransaction();
+
+try {
+
+#sql処理
+
+$pdo->commit();
+
+} catch (PDOException $e) {
+
+  $pdo->rollback();#更新キャンセル
+}
