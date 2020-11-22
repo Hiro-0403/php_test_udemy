@@ -5,8 +5,7 @@ session_start();
 require "validation.php";
 header("X-FRAME-OPTIONS:DENY");
 
-function h($str)
-{
+function h($str){
   return htmlspecialchars($str,ENT_QUOTES,"UTF-8");
 }
 #ファーム作成
@@ -107,7 +106,7 @@ $token =$_SESSION["csrfToken"];
 
     <div class="form-group">
       <label for="contact">お問い合わせ内容</label>
-      <textarea class="form-control" id="contact" row="3" name="contact">
+      <textarea class="form-control" id="contact" name="contact">
       <?php if(!empty($_POST["contact"])){echo $_POST["contact"] ;} ?>
       </textarea>
     </div>
@@ -146,9 +145,12 @@ $token =$_SESSION["csrfToken"];
 <?php if($pageFlag === 2) : ?>
 <?php if($_POST["csrf"] === $_SESSION["csrfToken"]) : ?>
 
-<!-- DB接続 -->
+<!-- DB保存 -->
+<?php require "../form/validation.php";
 
-<!-- DB保存 --> 
+insertContact($_POST);
+?>
+
 
 送信が完了しました。
 
