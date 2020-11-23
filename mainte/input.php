@@ -145,13 +145,6 @@ $token =$_SESSION["csrfToken"];
 <?php if($pageFlag === 2) : ?>
 <?php if($_POST["csrf"] === $_SESSION["csrfToken"]) : ?>
 
-<!-- DB保存 -->
-<?php require "../form/validation.php";
-
-insertContact($_POST);
-?>
-
-
 送信が完了しました。
 
 <?php unset($_SESSION["csrfToken"]); ?>
