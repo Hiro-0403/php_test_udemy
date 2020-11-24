@@ -15,17 +15,6 @@ $params = [
   "created_at" => null
 ];
 
-#入力 DB保存 prepare,execute(配列(全て文字列))
-// $params = [
-//   "id" => null,
-//   "your_name" => "1234",
-//   "email" => "test@test.com",
-//   "url" => "http://test2.com",
-//   "gender" => "1",
-//   "age" => "3",
-//   "contact" => "vvvvvv",
-//   "created_at" => null
-// ];
 
 $count = 0;
 $columns = "";
