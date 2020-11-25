@@ -34,6 +34,9 @@ $pdo->beginTransaction();
 try {
 
 #sql処理
+$stmt = $pdo->prepare($sql);#プリペアードステートメント
+$stmt->bindValue("id", 2, PDO::PARAM_INT);#紐付け
+$stmt->execute();#実行
 
 $pdo->commit();
 
